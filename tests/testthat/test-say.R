@@ -12,8 +12,8 @@ test_that("say types works as expected", {
 })
 
 test_that("say by works as expected", {
-  expect_equal(suppressMessages(say('%s', by = "chicken", type = "string")), animals[["chicken"]])
-  expect_equal(suppressMessages(say('%s', by = "ghost", type = "string")), animals[["ghost"]])
+  expect_equal(suppressMessages(say('{what}', by = "chicken", type = "string")), animals[["chicken"]])
+  expect_equal(suppressMessages(say('{what}', by = "ghost", type = "string")), animals[["ghost"]])
 })
 
 test_that("say fails well", {

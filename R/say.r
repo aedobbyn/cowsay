@@ -153,5 +153,5 @@ say <- function(what="Hello world!", by="cat", type="message", length=18,
   switch(type,
          message = message(who),
          warning = warning(who),
-         string = sprintf(who))
+         string = who)
 }
