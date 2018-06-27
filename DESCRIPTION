@@ -28,6 +28,7 @@ LazyData: yes
 VignetteBuilder: knitr
 Imports:
     crayon,
+    glue,
     fortunes,
     rmsfact
 Suggests:

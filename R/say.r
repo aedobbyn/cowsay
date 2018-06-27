@@ -147,10 +147,11 @@ say <- function(what="Hello world!", by="cat", type="message", length=18,
   
   color <- crayon::make_style(color)
   
-  what <- cat(color(what))
+  who <- glue::glue(color(who))
+  what <- glue::glue(color(what))
 
   switch(type,
-         message = message(sprintf(who, what)),
-         warning = warning(sprintf(who, what)),
-         string = sprintf(who, what))
+         message = message(who),
+         warning = warning(who),
+         string = sprintf(who))
 }
