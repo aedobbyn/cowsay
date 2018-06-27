@@ -13,8 +13,10 @@
 #' endless_horse()
 #' endless_horse(endless = FALSE)
 #' }
-endless_horse <- function(what="Hello world!", endless = TRUE, wait = 0.5) {
+endless_horse <- function(what="Hello world!", endless = TRUE, wait = 0.5, color="brown") {
   horse <- get_who("endlesshorse", NULL)
+  color <- crayon::make_style(color)
+  what <- cat(color(what))
   message(sprintf(horse, what))
   while (endless) {
     tryCatch(interrupt=function(e) {endless <<- FALSE}, {
