@@ -119,17 +119,17 @@ say <- function(what="Hello world!", by="cat",
     stop("what has to be of length 1", call. = FALSE)
   }
   
-  if (!is.null(what_color) & !(inherits(what_color, c("crayon", "character")))) {
+  if (!is.null(what_color) && !(inherits(what_color, c("crayon", "character")))) {
     stop("what_color must be of class character or crayon",
          call. = FALSE)
   }
 
-  if (!is.null(by_color) & !(inherits(by_color, c("crayon", "character")))) {
+  if (!is.null(by_color) && !(inherits(by_color, c("crayon", "character")))) {
     stop("by_color must be of class character or crayon",
          call. = FALSE)
   }
   
-  if (length(by_color) > 1 & !all(is.character(by_color))) {
+  if (length(by_color) > 1 && !all(is.character(by_color))) {
     stop("If by_color is > length 1, all colors must be of class character",
          call. = FALSE)
   }
@@ -175,18 +175,18 @@ say <- function(what="Hello world!", by="cat",
   
   what_pos_end <- what_pos_start + 3
   
-  if (!is.null(what_color) & is.character(what_color)) {
+  if (!is.null(what_color) && is.character(what_color)) {
     what_color <- crayon::make_style(what_color)
-  } else if (!is.null(what_color) & is.function(what_color)) {
+  } else if (!is.null(what_color) && is.function(what_color)) {
     what_color <- what_color
   } else {
     what_color <- function(x) x
   }
   
   if (length(by_color) < 2) {
-    if (!is.null(by_color) & is.character(by_color)) {
+    if (!is.null(by_color) && is.character(by_color)) {
       by_color <- crayon::make_style(by_color)
-    } else if (!is.null(by_color) & is.function(by_color)) {
+    } else if (!is.null(by_color) && is.function(by_color)) {
       by_color <- by_color
     } else {
       by_color <- function(x) x
