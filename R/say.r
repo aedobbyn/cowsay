@@ -201,24 +201,22 @@ say <- function(what="Hello world!", by="cat",
     }
     return(out)
   }
+
+  what <- color_text(what, what_color)
+  who <- color_text(who, by_color)
+  out <- sprintf(who, what)
   
-  # TODO: when multicolor doesn't color every character individually, this should be possible
-  # and we can get rid of what_pos_start and what_pos_end
-  # what <- color_text(what, what_color)
-  # who <- color_text(who, by_color)
-  # out <- sprintf(who, what)
-  
-  # switch(type,
-  #        message = message(sprintf(who, what)),
-  #        warning = warning(sprintf(who, what)),
-  #        string = sprintf(who, what))
-  
-  out <- paste0(color_text(substr(who, 1, what_pos_start),
-                           by_color),
-                color_text(what,
-                           what_color),
-                color_text(substr(who, what_pos_end, nchar(who)),
-                           by_color))
+  if (type == "warning") {
+    if (nchar(out) < 100) {
+      wl <- 100
+    } else if (nchar(out) > 8170) {
+      wl <- 8170
+    } else {
+      wl <- nchar(out) + 1
+    }
+    warn_op <- options(warning.length = wl)
+    on.exit(options(warn_op))
+  }
   
   switch(type,
          message = message(out),
